@@ -13,7 +13,6 @@ resource "tfe_workspace" "this" {
   terraform_version = var.tf_version
   assessments_enabled = var.workspace_assessments
   auto_apply = var.workspace_autoapply
-  #tag_names = [ "${var.project_name}-${var.workspace_env}" ]
 }
 
 
@@ -25,6 +24,6 @@ resource "tfe_notification_configuration" "this" {
   enabled          = true
   destination_type = "generic"
   triggers         = ["run:errored","run:needs_attention","assessment:failed", "assessment:check_failure", "assessment:drifted"]
-  url              = "https://webhook.site/89dfd3a6-b541-4858-8322-89ab10d8f1aa"
+  url              = var.notification_url
   workspace_id     = tfe_workspace.this.id
 }

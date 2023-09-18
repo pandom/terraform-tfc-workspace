@@ -61,3 +61,9 @@ variable "project_name" {
   default = ""
   type = string
 }
+
+variable "notification_url" {
+  description = "URL for Notifications to be sent to"
+  default = ""
+  type = string
+}
